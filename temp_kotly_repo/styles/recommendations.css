@@ -1,0 +1,357 @@
+/* styles/recommendations.css - Стили для системы рекомендаций */
+.recommendations-section {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin: 30px 0;
+    border: 1px solid #e2e8f0;
+}
+
+.recommendations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.recommendations-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recommendations-title i {
+    color: var(--primary);
+}
+
+.recommendations-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.recommendations-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recommendations-nav-btn:hover {
+    border-color: var(--primary);
+    background: #f8fafc;
+}
+
+.recommendations-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.recommendations-nav-btn:disabled:hover {
+    border-color: #e2e8f0;
+    background: white;
+}
+
+.recommendations-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.recommendations-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease;
+    padding: 5px;
+}
+
+.recommendation-card {
+    flex: 0 0 calc(25% - 15px);
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 250px;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+.recommendation-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gradient-success);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.recommendation-image {
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto 15px auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.recommendation-card:hover .recommendation-image {
+    transform: scale(1.05);
+}
+
+.recommendation-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    height: 2.8em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.recommendation-price {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.recommendation-current-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.recommendation-original-price {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.recommendation-save {
+    color: var(--success);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.recommendation-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.recommendation-add-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.recommendation-add-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.recommendation-add-btn:active {
+    transform: translateY(0);
+}
+
+.recommendation-compare-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recommendation-compare-btn:hover {
+    border-color: var(--primary);
+    background: #f8fafc;
+}
+
+.recommendation-compare-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.recommendation-stock {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.recommendation-stock.in-stock {
+    color: var(--success);
+}
+
+.recommendation-stock.out-of-stock {
+    color: var(--danger-light);
+}
+
+/* Индикаторы прокрутки */
+.recommendations-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.recommendations-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recommendations-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .recommendation-card {
+        flex: 0 0 calc(33.333% - 14px);
+    }
+}
+
+@media (max-width: 992px) {
+    .recommendation-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+    
+    .recommendations-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .recommendations-controls {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    .recommendation-card {
+        flex: 0 0 calc(100% - 10px);
+    }
+    
+    .recommendations-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .recommendations-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Анимация появления */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recommendations-section {
+    animation: slideUp 0.6s ease-out;
+}
+
+/* Скелетон-загрузка */
+.recommendation-skeleton {
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.skeleton-image {
+    height: 120px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.skeleton-text {
+    height: 16px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.skeleton-text.short {
+    width: 60%;
+}
+
+.skeleton-text.medium {
+    width: 80%;
+}
+
+.skeleton-price {
+    height: 24px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    width: 40%;
+}
+
+.skeleton-button {
+    height: 40px;
+    background: #f1f5f9;
+    border-radius: 6px;
+}

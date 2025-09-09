@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест кнопки корзины</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-container { max-width: 600px; margin: 0 auto; }
+        .test-button { 
+            padding: 15px 30px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .test-result { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px; 
+            background: #f8f9fa;
+        }
+        .success { color: green; border: 2px solid green; }
+        .error { color: red; border: 2px solid red; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 Тест работы кнопки корзины</h1>
+        
+        <button class="test-button" onclick="testAddToCart()">
+            🧪 Проверить добавление в корзину
+        </button>
+        
+        <button class="test-button" onclick="testCartFunctions()">
+            📋 Проверить все функции корзины
+        </button>
+        
+        <div id="test-result" class="test-result"></div>
+    </div>
+
+    <script>
+        // Тестовые данные
+        const testProducts = [{
+            Артикул: 'TEST001',
+            Модель: 'Тестовый котел 24 кВт',
+            Цена: 25000,
+            В_наличии: 5,
+            Мощность: '24',
+            Контуры: 'Двухконтурный',
+            WiFi: 'Да',
+            Фото: 'images/default.jpg'
+        }, {
+            Артикул: 'TEST002', 
+            Модель: 'Тестовый котел 32 кВт',
+            Цена: 32000,
+            В_наличии: 3,
+            Мощность: '32',
+            Контуры: 'Одноконтурный',
+            WiFi: 'Нет',
+            Фото: 'images/default.jpg'
+        }];
+
+        function testAddToCart() {
+            const resultDiv = document.getElementById('test-result');
+            resultDiv.innerHTML = '<h3>🧪 Тестирование добавления в корзину...</h3>';
+            
+            try {
+                // Инициализируем глобальные переменные
+                window.allProducts = testProducts;
+                window.cart = [];
+                window.currentDiscount = 0;
+
+                // Проверяем, есть ли функция addToCart
+                if (typeof addToCart !== 'function') {
+                    resultDiv.innerHTML += '<p class="error">❌ Функция addToCart не найдена!</p>';
+                    return;
+                }
+
+                resultDiv.innerHTML += '<p>✅ Функция addToCart найдена</p>';
+
+                // Пробуем добавить товар
+                const result = addToCart('TEST001');
+                
+                if (result && window.cart.length > 0) {
+                    resultDiv.innerHTML += `
+                        <p class="success">✅ Товар успешно добавлен в корзину!</p>
+                        <p>📦 Товаров в корзине: ${window.cart.length}</p>
+                        <p>🏷️ Название: ${window.cart[0].Модель}</p>
+                        <p>🔢 Количество: ${window.cart[0].quantity}</p>
+                        <p>💰 Цена: ${window.cart[0].Цена} руб.</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML += '<p class="error">❌ Товар не добавлен в корзину</p>';
+                }
+
+            } catch (error) {
+                resultDiv.innerHTML += `<p class="error">❌ Ошибка: ${error.message}</p>`;
+                console.error('Ошибка теста:', error);
+            }
+        }
+
+        function testCartFunctions() {
+            const resultDiv = document.getElementById('test-result');
+            resultDiv.innerHTML = '<h3>📋 Тестирование всех функций корзины...</h3>';
+            
+            try {
+                // Инициализируем
+                window.allProducts = testProducts;
+                window.cart = [];
+                window.currentDiscount = 10; // 10% скидка
+
+                // Тестируем все функции
+                const functionsToTest = ['addToCart', 'updateCartItem', 'removeFromCart', 'updateCartBadge'];
+                let passed = 0;
+                let failed = 0;
+
+                functionsToTest.forEach(funcName => {
+                    if (typeof window[funcName] === 'function') {
+                        resultDiv.innerHTML += `<p>✅ ${funcName} - найдена</p>`;
+                        passed++;
+                    } else {
+                        resultDiv.innerHTML += `<p class="error">❌ ${funcName} - не найдена</p>`;
+                        failed++;
+                    }
+                });
+
+                // Тест добавления
+                if (typeof addToCart === 'function') {
+                    addToCart('TEST001');
+                    addToCart('TEST002');
+                    resultDiv.innerHTML += `<p>📦 Добавлено товаров: ${window.cart.length}</p>`;
+                }
+
+                resultDiv.innerHTML += `
+                    <hr>
+                    <p><strong>Итог:</strong></p>
+                    <p>✅ Пройдено: ${passed}</p>
+                    <p>❌ Не пройдено: ${failed}</p>
+                `;
+
+            } catch (error) {
+                resultDiv.innerHTML += `<p class="error">❌ Ошибка: ${error.message}</p>`;
+            }
+        }
+
+        // Простая версия функций для теста
+        if (typeof addToCart === 'undefined') {
+            window.addToCart = function(article) {
+                const product = window.allProducts.find(p => p.Артикул === article);
+                if (!product) return false;
+
+                const existingItem = window.cart.find(item => item.Артикул === article);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    window.cart.push({
+                        ...product,
+                        quantity: 1,
+                        discountPrice: product.Цена * (1 - (window.currentDiscount || 0) / 100)
+                    });
+                }
+                
+                return true;
+            };
+        }
+    </script>
+</body>
+</html>

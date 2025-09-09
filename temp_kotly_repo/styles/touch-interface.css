@@ -1,0 +1,103 @@
+/* touch-interface.css - Стили для сенсорного интерфейса */
+
+.will-change {
+    will-change: transform, opacity;
+}
+
+/* Улучшенный zoom для изображений */
+.product-img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+/* Предотвращение выделения на touch-устройствах */
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Улучшенные стили для touch-устройств */
+.touch-optimized {
+    touch-action: manipulation;
+}
+
+/* Увеличенные области клика для мобильных */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Плавная анимация для touch-событий */
+.touch-feedback:active {
+    transform: scale(0.97);
+    opacity: 0.8;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+/* Стили для инпутов на touch-устройствах */
+.touch-input {
+    font-size: 16px; /* Предотвращает zoom в iOS */
+    padding: 12px;
+    border-radius: 8px;
+}
+
+/* Улучшенный скролл для мобильных */
+.touch-scroll {
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+}
+
+/* Стили для кнопок на touch-устройствах */
+.touch-button {
+    border: none;
+    background: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.touch-button:active {
+    background: #0056b3;
+    transform: translateY(1px);
+}
+
+/* Адаптивные стили для мобильных */
+@media (max-width: 768px) {
+    .mobile-optimized {
+        font-size: 14px;
+    }
+    
+    .mobile-full-width {
+        width: 100%;
+    }
+    
+    .mobile-padding {
+        padding: 8px;
+    }
+}
+
+/* Предотвращение bounce-эффекта в iOS */
+.no-bounce {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: auto;
+}
+
+/* Оптимизация для высокоDPI экранов */
+.high-dpi {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
