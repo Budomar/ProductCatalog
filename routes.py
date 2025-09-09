@@ -2,6 +2,7 @@ from flask import render_template, jsonify, request, session
 from app import app, db
 from models import Product, ProductView, Promotion
 from data_service import DataService
+from data_loader import DataLoader
 import uuid
 from datetime import datetime
 
@@ -9,6 +10,31 @@ from datetime import datetime
 def index():
     """Main catalog page"""
     return render_template('index.html')
+
+@app.route('/api/load-data', methods=['POST'])
+def load_data_from_sheets():
+    """Загрузить данные из Google Sheets"""
+    try:
+        data_loader = DataLoader()
+        result = data_loader.load_from_sheets()
+        
+        if result['success']:
+            return jsonify({
+                'success': True,
+                'message': result['message'],
+                'products_count': Product.query.count()
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': result['error']
+            }), 500
+            
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 @app.route('/api/products')
 def get_products():
