@@ -115,7 +115,8 @@ def setup_schedule():
     
     # Print next run times
     for job in schedule.jobs:
-        logger.info(f"Next run: {job.next_run} - {job.job_func.__name__}")
+        func_name = getattr(job.job_func, '__name__', 'unknown_function')
+        logger.info(f"Next run: {job.next_run} - {func_name}")
 
 def run_scheduler():
     """Run the scheduler"""

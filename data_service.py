@@ -19,15 +19,14 @@ class DataService:
             
             # Add products from JSON
             for item in data.get('products', []):
-                product = Product(
-                    name=item.get('name'),
-                    description=item.get('description'),
-                    price=float(item.get('price', 0)),
-                    category=item.get('category'),
-                    image_url=item.get('image_url'),
-                    specifications=item.get('specifications', {}),
-                    in_stock=item.get('in_stock', True)
-                )
+                product = Product()
+                product.name = item.get('name')
+                product.description = item.get('description')
+                product.price = float(item.get('price', 0))
+                product.category = item.get('category')
+                product.image_url = item.get('image_url')
+                product.specifications = item.get('specifications', {})
+                product.in_stock = item.get('in_stock', True)
                 db.session.add(product)
             
             db.session.commit()

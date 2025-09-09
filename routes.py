@@ -47,12 +47,11 @@ def get_product(product_id):
     if 'session_id' not in session:
         session['session_id'] = str(uuid.uuid4())
     
-    view = ProductView(
-        product_id=product_id,
-        user_session=session['session_id'],
-        user_agent=request.headers.get('User-Agent'),
-        ip_address=request.remote_addr
-    )
+    view = ProductView()
+    view.product_id = product_id
+    view.user_session = session['session_id']
+    view.user_agent = request.headers.get('User-Agent')
+    view.ip_address = request.remote_addr
     db.session.add(view)
     
     # Increment view count
@@ -135,3 +134,45 @@ def sync_data():
         return jsonify({'success': True, 'message': result})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/analytics/events', methods=['POST'])
+def analytics_events():
+    """Receive analytics events"""
+    try:
+        data = request.get_json()
+        if data and 'events' in data:
+            # Log events for now (in production you'd save to database)
+            print(f"Analytics events received: {len(data['events'])} events")
+            for event in data['events']:
+                print(f"Event: {event.get('event_name')} - {event.get('timestamp')}")
+        return jsonify({'success': True})
+    except Exception as e:
+        print(f"Analytics error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/notifications/subscribe', methods=['POST'])
+def notifications_subscribe():
+    """Subscribe to push notifications"""
+    try:
+        data = request.get_json()
+        if data and 'subscription' in data:
+            print(f"Push notification subscription received")
+            # In production, you'd save the subscription to database
+        return jsonify({'success': True})
+    except Exception as e:
+        print(f"Notification subscription error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/delivery/rates')
+def delivery_rates():
+    """Get delivery rates and zones"""
+    rates = {
+        'rates': {
+            'express': {'name': 'Экспресс-доставка', 'baseRate': 500, 'perKg': 50, 'time': '2-4 часа'},
+            'standard': {'name': 'Стандартная доставка', 'baseRate': 200, 'perKg': 20, 'time': '1-2 дня'},
+            'economy': {'name': 'Экономная доставка', 'baseRate': 100, 'perKg': 10, 'time': '3-5 дней'},
+            'pickup': {'name': 'Самовывоз', 'baseRate': 0, 'perKg': 0, 'time': 'В любое время'}
+        },
+        'freeThreshold': 3000
+    }
+    return jsonify(rates)

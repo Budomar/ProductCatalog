@@ -2,6 +2,7 @@
 Admin routes for catalog management
 """
 
+import os
 from flask import render_template, request, jsonify, redirect, url_for, flash
 from app import app, db
 from models import Product, Promotion, ProductView
@@ -148,14 +149,17 @@ def admin_new_promotion():
     """Create new promotion"""
     if request.method == 'POST':
         try:
-            promotion = Promotion(
-                title=request.form.get('title'),
-                description=request.form.get('description'),
-                discount_percentage=float(request.form.get('discount_percentage', 0)),
-                start_date=datetime.strptime(request.form.get('start_date'), '%Y-%m-%d'),
-                end_date=datetime.strptime(request.form.get('end_date'), '%Y-%m-%d'),
-                active=bool(request.form.get('active'))
-            )
+            promotion = Promotion()
+            promotion.title = request.form.get('title')
+            promotion.description = request.form.get('description')
+            promotion.discount_percentage = float(request.form.get('discount_percentage', 0))
+            start_date_str = request.form.get('start_date')
+            end_date_str = request.form.get('end_date')
+            if start_date_str:
+                promotion.start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
+            if end_date_str:
+                promotion.end_date = datetime.strptime(end_date_str, '%Y-%m-%d')
+            promotion.active = bool(request.form.get('active'))
             
             db.session.add(promotion)
             db.session.commit()
