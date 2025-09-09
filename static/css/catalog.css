@@ -1,0 +1,268 @@
+/* Custom styles for the catalog */
+
+:root {
+    --transition-speed: 0.3s;
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-hover: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Product Cards */
+.product-card {
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    height: 100%;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-image {
+    height: 200px;
+    object-fit: cover;
+    background: var(--bs-gray-100);
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-image::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Font Awesome 6 Free";
+    font-content: "\f03e";
+    font-size: 2rem;
+    color: var(--bs-gray-400);
+    z-index: 1;
+}
+
+/* View Toggle Styles */
+.view-grid .col-lg-3 {
+    transition: all var(--transition-speed);
+}
+
+.view-list .product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.view-list .product-image {
+    width: 150px;
+    height: 120px;
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+
+.view-list .card-body {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Comparison styles */
+.comparison-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.comparison-table {
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    min-width: 600px;
+}
+
+/* Cart styles */
+.cart-item {
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 1rem 0;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+}
+
+/* Mobile touch enhancements */
+@media (max-width: 768px) {
+    .product-card {
+        touch-action: manipulation;
+    }
+    
+    .btn, .form-control, .form-select {
+        min-height: 44px; /* iOS touch target minimum */
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 1rem;
+    }
+    
+    /* Swipe indicators */
+    .swipe-indicator {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity var(--transition-speed);
+    }
+    
+    .swipe-indicator.left {
+        left: 10px;
+    }
+    
+    .swipe-indicator.right {
+        right: 10px;
+    }
+    
+    .product-card:hover .swipe-indicator {
+        opacity: 1;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.skeleton {
+    background: linear-gradient(90deg, var(--bs-gray-200) 25%, var(--bs-gray-100) 50%, var(--bs-gray-200) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Notifications */
+.notification {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Social sharing */
+.social-share-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.social-share-buttons .btn {
+    flex: 1;
+    min-width: 40px;
+}
+
+/* Delivery calculator */
+.delivery-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.delivery-option {
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.delivery-option:hover {
+    border-color: var(--bs-primary);
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.delivery-option.selected {
+    border-color: var(--bs-primary);
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+/* Accessibility improvements */
+.visually-hidden-focusable:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+}
+
+/* Print styles */
+@media print {
+    .navbar, .offcanvas, .modal, .btn, .dropdown {
+        display: none !important;
+    }
+    
+    .product-card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .product-card {
+        border: 2px solid;
+    }
+    
+    .btn {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

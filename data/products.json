@@ -1,0 +1,245 @@
+{
+  "products": [
+    {
+      "name": "iPhone 14 Pro Max",
+      "description": "Флагманский смартфон Apple с профессиональной камерой и мощным процессором A16 Bionic",
+      "price": 89990,
+      "category": "Смартфоны",
+      "image_url": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&h=400&fit=crop",
+      "specifications": {
+        "Экран": "6.7\" Super Retina XDR OLED",
+        "Процессор": "Apple A16 Bionic",
+        "Память": "128 ГБ",
+        "Камера": "48 МП основная",
+        "Операционная система": "iOS 16"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Samsung Galaxy S23 Ultra",
+      "description": "Премиальный смартфон Samsung с S Pen и улучшенными камерами",
+      "price": 79990,
+      "category": "Смартфоны",
+      "image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=400&fit=crop",
+      "specifications": {
+        "Экран": "6.8\" Dynamic AMOLED 2X",
+        "Процессор": "Snapdragon 8 Gen 2",
+        "Память": "256 ГБ",
+        "Камера": "200 МП основная",
+        "Операционная система": "Android 13"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "MacBook Air M2",
+      "description": "Ультратонкий ноутбук Apple с чипом M2 для максимальной производительности",
+      "price": 119990,
+      "category": "Ноутбуки",
+      "image_url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=400&fit=crop",
+      "specifications": {
+        "Процессор": "Apple M2",
+        "Экран": "13.6\" Liquid Retina",
+        "Память": "256 ГБ SSD",
+        "Оперативная память": "8 ГБ",
+        "Вес": "1.24 кг"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Dell XPS 13",
+      "description": "Компактный ноутбук премиум-класса с процессором Intel 12-го поколения",
+      "price": 89990,
+      "category": "Ноутбуки",
+      "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop",
+      "specifications": {
+        "Процессор": "Intel Core i5-1235U",
+        "Экран": "13.4\" FHD+",
+        "Память": "512 ГБ SSD",
+        "Оперативная память": "16 ГБ",
+        "Вес": "1.17 кг"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Sony WH-1000XM4",
+      "description": "Беспроводные наушники с активным шумоподавлением и великолепным звуком",
+      "price": 24990,
+      "category": "Аудио",
+      "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
+      "specifications": {
+        "Тип": "Накладные беспроводные",
+        "Активное шумоподавление": "Да",
+        "Время работы": "До 30 часов",
+        "Зарядка": "USB-C",
+        "Поддержка кодеков": "LDAC, aptX HD"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "AirPods Pro (2-го поколения)",
+      "description": "Беспроводные наушники Apple с адаптивным шумоподавлением",
+      "price": 22990,
+      "category": "Аудио",
+      "image_url": "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400&h=400&fit=crop",
+      "specifications": {
+        "Тип": "Вкладыши беспроводные",
+        "Активное шумоподавление": "Адаптивное",
+        "Время работы": "До 6 часов (с чехлом до 30)",
+        "Зарядка": "Lightning/MagSafe/Qi",
+        "Чип": "Apple H2"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "iPad Pro 12.9\" M2",
+      "description": "Профессиональный планшет Apple с чипом M2 и Liquid Retina XDR дисплеем",
+      "price": 109990,
+      "category": "Планшеты",
+      "image_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop",
+      "specifications": {
+        "Процессор": "Apple M2",
+        "Экран": "12.9\" Liquid Retina XDR",
+        "Память": "128 ГБ",
+        "Оперативная память": "8 ГБ",
+        "Поддержка Apple Pencil": "2-го поколения"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Samsung Galaxy Tab S8+",
+      "description": "Премиальный Android-планшет с S Pen и большим AMOLED экраном",
+      "price": 69990,
+      "category": "Планшеты",
+      "image_url": "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400&h=400&fit=crop",
+      "specifications": {
+        "Процессор": "Snapdragon 8 Gen 1",
+        "Экран": "12.4\" Super AMOLED",
+        "Память": "128 ГБ",
+        "Оперативная память": "8 ГБ",
+        "S Pen": "В комплекте"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "PlayStation 5",
+      "description": "Игровая консоль нового поколения с поддержкой 4K и трассировки лучей",
+      "price": 54990,
+      "category": "Игровые консоли",
+      "image_url": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400&h=400&fit=crop",
+      "specifications": {
+        "Процессор": "AMD Zen 2 8-core",
+        "Графика": "AMD RDNA 2",
+        "Память": "825 ГБ SSD",
+        "Разрешение": "До 4K 120fps",
+        "Особенности": "Трассировка лучей, 3D звук"
+      },
+      "in_stock": false
+    },
+    {
+      "name": "Xbox Series X",
+      "description": "Мощная игровая консоль Microsoft с поддержкой Quick Resume",
+      "price": 52990,
+      "category": "Игровые консоли",
+      "image_url": "https://images.unsplash.com/photo-1605901309584-818e25960a8f?w=400&h=400&fit=crop",
+      "specifications": {
+        "Процессор": "AMD Zen 2 8-core",
+        "Графика": "AMD RDNA 2",
+        "Память": "1 ТБ SSD",
+        "Разрешение": "До 4K 120fps",
+        "Особенности": "Quick Resume, Smart Delivery"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Apple Watch Series 8",
+      "description": "Умные часы Apple с датчиком температуры и всегда включенным дисплеем",
+      "price": 34990,
+      "category": "Умные часы",
+      "image_url": "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=400&h=400&fit=crop",
+      "specifications": {
+        "Размер": "41мм/45мм",
+        "Дисплей": "Always-On Retina",
+        "Процессор": "S8 SiP",
+        "Датчики": "Температура, ЭКГ, SpO2",
+        "Водостойкость": "WR50"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Samsung Galaxy Watch5 Pro",
+      "description": "Профессиональные умные часы с титановым корпусом и GPS",
+      "price": 29990,
+      "category": "Умные часы",
+      "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
+      "specifications": {
+        "Размер": "45мм",
+        "Дисплей": "1.4\" Super AMOLED",
+        "Материал": "Титан",
+        "Датчики": "GPS, пульсометр, SpO2",
+        "Батарея": "До 80 часов"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "LG OLED55C2PUA 55\"",
+      "description": "OLED телевизор 4K с поддержкой HDR и webOS Smart TV",
+      "price": 149990,
+      "category": "Телевизоры",
+      "image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=400&fit=crop",
+      "specifications": {
+        "Диагональ": "55 дюймов",
+        "Разрешение": "4K OLED",
+        "HDR": "Dolby Vision, HDR10",
+        "Smart TV": "webOS 22",
+        "Частота": "120 Гц"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Samsung QN65QN90BAFXZA 65\"",
+      "description": "QLED телевизор премиум-класса с технологией Neo Quantum",
+      "price": 179990,
+      "category": "Телевизоры",
+      "image_url": "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=400&h=400&fit=crop",
+      "specifications": {
+        "Диагональ": "65 дюймов",
+        "Разрешение": "4K Neo QLED",
+        "HDR": "Quantum HDR 32X",
+        "Smart TV": "Tizen OS",
+        "Частота": "120 Гц"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Canon EOS R5",
+      "description": "Профессиональная беззеркальная камера с записью видео 8K",
+      "price": 399990,
+      "category": "Фототехника",
+      "image_url": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=400&fit=crop",
+      "specifications": {
+        "Матрица": "45 МП полнокадровая CMOS",
+        "Видео": "8K RAW до 30p",
+        "Автофокус": "1053 точки Dual Pixel",
+        "Стабилизация": "5-осевая IBIS",
+        "Крепление": "Canon RF"
+      },
+      "in_stock": true
+    },
+    {
+      "name": "Sony α7 IV",
+      "description": "Универсальная полнокадровая камера для фото и видео",
+      "price": 289990,
+      "category": "Фототехника",
+      "image_url": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=400&fit=crop",
+      "specifications": {
+        "Матрица": "33 МП полнокадровая Exmor R",
+        "Видео": "4K 60p",
+        "Автофокус": "759 точек",
+        "Стабилизация": "5-осевая",
+        "Крепление": "Sony E"
+      },
+      "in_stock": true
+    }
+  ],
+  "last_updated": "2024-12-19T12:00:00Z"
+}

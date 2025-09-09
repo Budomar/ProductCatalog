@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог товаров - Главная{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <!-- Promotions Banner -->
+    <div id="promotionsBanner" class="mb-4">
+        <!-- Populated by JavaScript -->
+    </div>
+
+    <!-- Filters and Controls -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="d-flex flex-wrap gap-2">
+                <select class="form-select" style="width: auto;" id="categoryFilter">
+                    <option value="">Все категории</option>
+                </select>
+                
+                <select class="form-select" style="width: auto;" id="sortSelect">
+                    <option value="name">По названию</option>
+                    <option value="price">По цене</option>
+                    <option value="views">По популярности</option>
+                </select>
+                
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="inStockOnly" checked>
+                    <label class="form-check-label" for="inStockOnly">
+                        Только в наличии
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 text-end">
+            <small class="text-muted" id="productsCount">
+                Найдено товаров: 0
+            </small>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="text-center my-5">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div id="productsGrid" class="row g-4 view-grid">
+        <!-- Products will be populated by JavaScript -->
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+        <h4 class="alert-heading">Ошибка загрузки</h4>
+        <p>Не удалось загрузить каталог товаров. Пожалуйста, попробуйте позже.</p>
+        <hr>
+        <button class="btn btn-outline-danger" onclick="window.location.reload()">
+            Обновить страницу
+        </button>
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="text-center my-5 d-none">
+        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+        <h3>Товары не найдены</h3>
+        <p class="text-muted">Попробуйте изменить критерии поиска или фильтры</p>
+        <button class="btn btn-outline-secondary" onclick="clearFilters()">
+            Сбросить фильтры
+        </button>
+    </div>
+</div>
+
+<!-- Delivery Calculator Modal -->
+<div class="modal fade" id="deliveryModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Калькулятор доставки</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="deliveryForm">
+                    <div class="mb-3">
+                        <label for="deliveryCity" class="form-label">Город доставки</label>
+                        <input type="text" class="form-control" id="deliveryCity" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deliveryAddress" class="form-label">Адрес доставки</label>
+                        <textarea class="form-control" id="deliveryAddress" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deliveryWeight" class="form-label">Общий вес (кг)</label>
+                        <input type="number" class="form-control" id="deliveryWeight" min="0" step="0.1" value="1">
+                    </div>
+                </form>
+                <div id="deliveryResult" class="alert alert-info d-none">
+                    <!-- Delivery calculation result -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" onclick="calculateDelivery()">Рассчитать</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
